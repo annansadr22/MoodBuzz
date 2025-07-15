@@ -70,35 +70,45 @@ class MoodBuzz {
         // Hide scan button and show processing
         this.scanButton.style.display = 'none';
         this.moodProcessing.classList.add('active');
-        
-        // Simulate mood detection processing
-        await this.simulateMoodDetection();
-        
-        // Stop camera stream
-        if (this.stream) {
-            this.stream.getTracks().forEach(track => track.stop());
-        }
-        
-        // Get random mood and redirect
-        const detectedMood = this.getRandomMood();
-        this.redirectToMoodPage(detectedMood);
+
+        // Capture frame from video
+        const canvas = document.createElement('canvas');
+        canvas.width = this.videoElement.videoWidth;
+        canvas.height = this.videoElement.videoHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(this.videoElement, 0, 0, canvas.width, canvas.height);
+
+        // Convert canvas to Blob
+        canvas.toBlob(async (blob) => {
+            const formData = new FormData();
+            formData.append("file", blob, "frame.jpg");
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/predict-emotion/", {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (!response.ok) throw new Error("Server error");
+
+                const result = await response.json();
+                const detectedMood = result.mood || "neutral"; // Fallback
+                this.redirectToMoodPage(detectedMood);
+            } catch (err) {
+                console.error("❌ Mood detection failed:", err);
+                this.showError("AI mood detection failed. Please try again.");
+            } finally {
+                // Stop the stream and hide loading
+                if (this.stream) {
+                    this.stream.getTracks().forEach(track => track.stop());
+                }
+                this.moodProcessing.classList.remove('active');
+            }
+        }, "image/jpeg");
     }
 
-    async simulateMoodDetection() {
-        // Simulate AI processing time (3-5 seconds)
-        const processingTime = Math.random() * 2000 + 3000;
-        
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve();
-            }, processingTime);
-        });
-    }
 
-    getRandomMood() {
-        const moods = ['happy', 'sad', 'angry', 'neutral', 'fear', 'disgust', 'surprise'];
-        return moods[Math.floor(Math.random() * moods.length)];
-    }
+    
 
     redirectToMoodPage(mood) {
         // Add a slight delay for better UX
