@@ -1,0 +1,272 @@
+/* Surprise Mood Page Styles */
+
+.surprise-mood {
+    background: linear-gradient(135deg, #ff1744, #ff4081, #e91e63);
+    background-size: 400% 400%;
+    animation: surpriseGradient 5s ease infinite;
+}
+
+@keyframes surpriseGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.surprise-mood .logo {
+    background: linear-gradient(45deg, #ff1744, #ff4081, #e91e63);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(255, 23, 68, 0.5);
+}
+
+/* Animated Background */
+.surprise-mood .animated-bg .electric-bolt {
+    position: absolute;
+    width: 6px;
+    height: 60px;
+    background: linear-gradient(to bottom, #ff1744, #ff4081, transparent);
+    animation: electricBolt 2s ease-in-out infinite;
+    border-radius: 50%;
+}
+
+.surprise-mood .animated-bg .electric-bolt:nth-child(1) {
+    top: 20%;
+    left: 30%;
+    animation-delay: 0s;
+    transform: rotate(45deg);
+}
+
+.surprise-mood .animated-bg .electric-bolt:nth-child(2) {
+    top: 60%;
+    right: 20%;
+    animation-delay: 0.7s;
+    transform: rotate(-30deg);
+}
+
+.surprise-mood .animated-bg .electric-bolt:nth-child(3) {
+    bottom: 30%;
+    left: 60%;
+    animation-delay: 1.4s;
+    transform: rotate(60deg);
+}
+
+@keyframes electricBolt {
+    0%, 100% { opacity: 0; transform: scale(1) rotate(var(--rotation, 0deg)); }
+    10% { opacity: 1; transform: scale(1.2) rotate(var(--rotation, 0deg)); }
+    20% { opacity: 0; transform: scale(1) rotate(var(--rotation, 0deg)); }
+    30% { opacity: 1; transform: scale(1.1) rotate(var(--rotation, 0deg)); }
+    40% { opacity: 0; transform: scale(1) rotate(var(--rotation, 0deg)); }
+}
+
+.surprise-mood .animated-bg .shockwave {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 3px solid rgba(255, 23, 68, 0.5);
+    border-radius: 50%;
+    animation: shockwave 3s ease-out infinite;
+}
+
+.surprise-mood .animated-bg .shockwave:nth-child(4) {
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: 0s;
+}
+
+.surprise-mood .animated-bg .shockwave:nth-child(5) {
+    top: 60%;
+    right: 30%;
+    transform: translate(50%, -50%);
+    animation-delay: 1.5s;
+}
+
+@keyframes shockwave {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+}
+
+.surprise-mood .animated-bg .spark-particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #ff1744, #ff4081);
+    border-radius: 50%;
+    animation: sparkParticle 2s ease-in-out infinite;
+}
+
+.surprise-mood .animated-bg .spark-particle:nth-child(6) {
+    top: 30%;
+    left: 80%;
+    animation-delay: 0s;
+}
+
+.surprise-mood .animated-bg .spark-particle:nth-child(7) {
+    top: 70%;
+    left: 20%;
+    animation-delay: 1s;
+}
+
+.surprise-mood .animated-bg .spark-particle:nth-child(8) {
+    bottom: 40%;
+    right: 40%;
+    animation-delay: 0.5s;
+}
+
+@keyframes sparkParticle {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+    25% { transform: scale(2) rotate(90deg); opacity: 1; }
+    50% { transform: scale(0.5) rotate(180deg); opacity: 0.3; }
+    75% { transform: scale(1.5) rotate(270deg); opacity: 0.9; }
+}
+
+/* Mood Card */
+.surprise-mood .mood-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 23, 68, 0.5);
+    box-shadow: 0 20px 40px rgba(255, 23, 68, 0.3);
+    max-width: 700px;
+    width: 100%;
+}
+
+.surprise-mood .mood-card .card-glow {
+    background: radial-gradient(circle, rgba(255, 23, 68, 0.2) 0%, transparent 70%);
+}
+
+.surprise-mood .mood-title {
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, #ff1744, #ff4081);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    animation: titleSurprise 1s ease-in-out infinite alternate;
+}
+
+@keyframes titleSurprise {
+    0% { text-shadow: 0 0 20px rgba(255, 23, 68, 0.5); }
+    100% { text-shadow: 0 0 40px rgba(255, 23, 68, 0.9); }
+}
+
+.surprise-mood .mood-subtitle {
+    color: rgba(255, 64, 129, 0.9);
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.surprise-mood .mood-description {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 23, 68, 0.3);
+}
+
+.surprise-mood .mood-description p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* Music Player */
+.surprise-mood .music-player {
+    background: rgba(255, 23, 68, 0.1);
+    border: 2px solid rgba(255, 23, 68, 0.5);
+    box-shadow: 0 10px 30px rgba(255, 23, 68, 0.3);
+}
+
+.surprise-mood .play-btn {
+    background: linear-gradient(45deg, #ff1744, #ff4081);
+    box-shadow: 0 5px 15px rgba(255, 23, 68, 0.6);
+}
+
+.surprise-mood .play-btn:hover {
+    box-shadow: 0 8px 25px rgba(255, 23, 68, 0.8);
+}
+
+.surprise-mood .progress-fill {
+    background: linear-gradient(90deg, #ff1744, #ff4081, #e91e63);
+    animation: surpriseProgress 2s linear infinite;
+}
+
+@keyframes surpriseProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+.surprise-mood .volume-bars .bar.active {
+    background: linear-gradient(to top, #e91e63, #ff1744);
+}
+
+/* Activity Cards */
+.surprise-mood .activity-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 23, 68, 0.4);
+    transition: all 0.3s ease;
+}
+
+.surprise-mood .activity-card:hover {
+    background: rgba(255, 23, 68, 0.2);
+    border-color: rgba(255, 23, 68, 0.7);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 23, 68, 0.4);
+}
+
+.surprise-mood .activity-icon {
+    filter: drop-shadow(0 2px 10px rgba(255, 23, 68, 0.7));
+}
+
+/* Scan Again Button */
+.surprise-mood .scan-again-button {
+    background: linear-gradient(45deg, #ff1744, #ff4081, #e91e63);
+    box-shadow: 0 10px 30px rgba(255, 23, 68, 0.5);
+}
+
+.surprise-mood .scan-again-button:hover {
+    box-shadow: 0 15px 40px rgba(255, 23, 68, 0.7);
+    transform: translateY(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .surprise-mood .mood-title {
+        font-size: 2rem;
+    }
+    
+    .surprise-mood .animated-bg .shockwave {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .surprise-mood .animated-bg .electric-bolt {
+        width: 4px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .surprise-mood .mood-title {
+        font-size: 1.8rem;
+    }
+    
+    .surprise-mood .mood-subtitle {
+        font-size: 1rem;
+    }
+    
+    .surprise-mood .mood-description {
+        padding: 1rem;
+    }
+    
+    .surprise-mood .animated-bg .shockwave {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .surprise-mood .animated-bg .electric-bolt {
+        width: 3px;
+        height: 30px;
+    }
+}

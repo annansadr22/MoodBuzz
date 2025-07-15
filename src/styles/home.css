@@ -1,0 +1,346 @@
+/* Home Page Specific Styles */
+
+/* Animated Background Particles */
+.animated-bg .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #00d4ff, transparent);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+.animated-bg .particle:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 8s;
+}
+
+.animated-bg .particle:nth-child(2) {
+    top: 60%;
+    left: 80%;
+    animation-delay: 2s;
+    animation-duration: 10s;
+}
+
+.animated-bg .particle:nth-child(3) {
+    top: 80%;
+    left: 20%;
+    animation-delay: 4s;
+    animation-duration: 12s;
+}
+
+.animated-bg .particle:nth-child(4) {
+    top: 30%;
+    left: 70%;
+    animation-delay: 1s;
+    animation-duration: 9s;
+}
+
+.animated-bg .particle:nth-child(5) {
+    top: 70%;
+    left: 50%;
+    animation-delay: 3s;
+    animation-duration: 11s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-20px) rotate(90deg); }
+    50% { transform: translateY(-10px) rotate(180deg); }
+    75% { transform: translateY(-30px) rotate(270deg); }
+}
+
+/* Main Card */
+.main-card {
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Camera Section */
+.camera-section {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.camera-preview {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    display: none;
+}
+
+.camera-preview.active {
+    display: block;
+}
+
+#videoElement {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.camera-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.scanning-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+    animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+    0% { top: 0; }
+    100% { top: calc(100% - 2px); }
+}
+
+.corner-brackets {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.bracket {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #00d4ff;
+    animation: bracketPulse 1.5s ease-in-out infinite;
+}
+
+.bracket.top-left {
+    top: 15px;
+    left: 15px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.bracket.top-right {
+    top: 15px;
+    right: 15px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.bracket.bottom-left {
+    bottom: 15px;
+    left: 15px;
+    border-right: none;
+    border-top: none;
+}
+
+.bracket.bottom-right {
+    bottom: 15px;
+    right: 15px;
+    border-left: none;
+    border-top: none;
+}
+
+@keyframes bracketPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Camera Prompt */
+.camera-prompt {
+    text-align: center;
+    padding: 2rem;
+}
+
+.camera-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    color: #00d4ff;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.camera-prompt h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.camera-prompt p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Controls */
+.controls {
+    margin-bottom: 2rem;
+}
+
+.scan-button {
+    position: relative;
+    min-width: 200px;
+    background: linear-gradient(45deg, #00d4ff, #0099ff, #0066ff);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.scan-button:hover {
+    animation-play-state: paused;
+}
+
+/* Mood Processing */
+.mood-processing {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+}
+
+.mood-processing.active {
+    display: block;
+}
+
+.processing-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.processing-dot {
+    width: 12px;
+    height: 12px;
+    background: #00d4ff;
+    border-radius: 50%;
+    animation: processing 1.5s ease-in-out infinite;
+}
+
+.processing-dot:nth-child(1) { animation-delay: 0s; }
+.processing-dot:nth-child(2) { animation-delay: 0.5s; }
+.processing-dot:nth-child(3) { animation-delay: 1s; }
+
+@keyframes processing {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+}
+
+.mood-processing p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Info Section */
+.info-section {
+    width: 100%;
+    max-width: 500px;
+}
+
+.info-card {
+    text-align: center;
+}
+
+.info-card h3 {
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.3rem;
+}
+
+.info-steps {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #00d4ff, #0099ff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.step p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .camera-preview {
+        height: 250px;
+    }
+    
+    .info-steps {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .step {
+        flex-direction: row;
+        text-align: left;
+        gap: 1rem;
+    }
+    
+    .step-number {
+        flex-shrink: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .camera-preview {
+        height: 200px;
+    }
+    
+    .camera-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .scan-button {
+        min-width: 150px;
+        padding: 0.8rem 1.5rem;
+    }
+}
